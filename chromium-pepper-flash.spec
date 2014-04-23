@@ -29,11 +29,10 @@ Official PDF viewer plugin for Google's Open Source browser Chromium.
 
 
 %build
-%ifarch i586
-rpm2cpio %{SOURCE0} | cpio -idmv
-%endif
 %ifarch x86_64
 rpm2cpio %{SOURCE1} | cpio -idmv
+%else
+rpm2cpio %{SOURCE0} | cpio -idmv
 %endif
 
 
