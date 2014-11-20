@@ -1,6 +1,6 @@
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        15.0.0.152
+Version:        15.0.0.223
 Release:        1%{?dist}
 
 License:        Proprietary
@@ -51,6 +51,9 @@ install -m755 opt/google/chrome/libpdf.so %{buildroot}%{_libdir}/chromium/
 %{_libdir}/chromium/libpdf.so
 
 %changelog
+* Thu Nov 20 2014 Arkady L. Shane <ashejn@russianfedora.ru> 15.0.0.223-1.R
+- update to 15.0.0.223
+
 * Wed Oct  8 2014 Arkady L. Shane <ashejn@russianfedora.ru> 15.0.0.152-1.R
 - update to 15.0.0.152
 
