@@ -1,6 +1,6 @@
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        15.0.0.223
+Version:        16.0.0.235
 Release:        1%{?dist}
 
 License:        Proprietary
@@ -10,8 +10,6 @@ Source0:        https://dl.google.com/linux/direct/google-chrome-stable_current_
 Source1:        https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 
 BuildRequires:  rpm cpio
-
-Requires:       chromium
 
 %description
 Pepper API based Adobe Flash plugin for Google's Open Source browser Chromium.
@@ -51,6 +49,9 @@ install -m755 opt/google/chrome/libpdf.so %{buildroot}%{_libdir}/chromium/
 %{_libdir}/chromium/libpdf.so
 
 %changelog
+* Tue Dec 23 2014 Arkady L. Shane <ashejn@russianfedora.ru> 16.0.0.235-1.R
+- update to 16.0.0.235
+
 * Thu Nov 20 2014 Arkady L. Shane <ashejn@russianfedora.ru> 15.0.0.223-1.R
 - update to 15.0.0.223
 
