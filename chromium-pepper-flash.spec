@@ -17,7 +17,6 @@ Pepper API based Adobe Flash plugin for Google's Open Source browser Chromium.
 %package -n chromium-pdf-plugin
 Summary:        Chromium PDF viewer plugin
 Group:          Applications/Internet
-Requires:       chromium
 
 %description -n chromium-pdf-plugin
 Official PDF viewer plugin for Google's Open Source browser Chromium.
