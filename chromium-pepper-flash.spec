@@ -1,7 +1,7 @@
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        16.0.0.291
-Release:        2%{?dist}
+Version:        16.0.0.305
+Release:        1%{?dist}
 
 License:        Proprietary
 Url:            http://www.google.com/chrome
@@ -67,6 +67,9 @@ install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/
 
 
 %changelog
+* Tue Feb 24 2015 Arkady L. Shane <ashejn@russianfedora.ru> 16.0.0.305-1.R
+- update to 16.0.0.305
+
 * Fri Jan 23 2015 Arkady L. Shane <ashejn@russianfedora.ru> 16.0.0.291-2.R
 - added Widevine CDM plugin
 
