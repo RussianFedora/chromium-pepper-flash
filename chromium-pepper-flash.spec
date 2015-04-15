@@ -16,14 +16,6 @@ BuildRequires:  rpm cpio
 Pepper API based Adobe Flash plugin for Google's Open Source browser Chromium.
 
 
-#%package -n chromium-pdf-plugin
-#Summary:        Chromium PDF viewer plugin
-#Group:          Applications/Internet
-#
-#%description -n chromium-pdf-plugin
-#Official PDF viewer plugin for Google's Open Source browser Chromium.
-
-
 %package -n chromium-widevinecdm-plugin
 Summary:        Chromium Widevine CDM plugin
 Group:          Applications/Internet
@@ -47,7 +39,6 @@ rpm2cpio %{SOURCE0} | cpio -idmv
 %install
 mkdir -p %{buildroot}%{_libdir}/chromium/PepperFlash/
 install -m644 opt/google/chrome/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
-#install -m755 opt/google/chrome/libpdf.so %{buildroot}%{_libdir}/chromium/
 install -m755 opt/google/chrome/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
 install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
 
@@ -55,10 +46,6 @@ install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/
 %files
 %dir %{_libdir}/chromium/
 %{_libdir}/chromium/PepperFlash/
-
-
-#%files -n chromium-pdf-plugin
-#%{_libdir}/chromium/libpdf.so
 
 
 %files -n chromium-widevinecdm-plugin
