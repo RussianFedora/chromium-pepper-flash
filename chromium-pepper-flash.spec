@@ -1,6 +1,6 @@
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        17.0.0.134
+Version:        17.0.0.169
 Release:        1%{?dist}
 
 License:        Proprietary
@@ -16,12 +16,12 @@ BuildRequires:  rpm cpio
 Pepper API based Adobe Flash plugin for Google's Open Source browser Chromium.
 
 
-%package -n chromium-pdf-plugin
-Summary:        Chromium PDF viewer plugin
-Group:          Applications/Internet
-
-%description -n chromium-pdf-plugin
-Official PDF viewer plugin for Google's Open Source browser Chromium.
+#%package -n chromium-pdf-plugin
+#Summary:        Chromium PDF viewer plugin
+#Group:          Applications/Internet
+#
+#%description -n chromium-pdf-plugin
+#Official PDF viewer plugin for Google's Open Source browser Chromium.
 
 
 %package -n chromium-widevinecdm-plugin
@@ -47,7 +47,7 @@ rpm2cpio %{SOURCE0} | cpio -idmv
 %install
 mkdir -p %{buildroot}%{_libdir}/chromium/PepperFlash/
 install -m644 opt/google/chrome/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
-install -m755 opt/google/chrome/libpdf.so %{buildroot}%{_libdir}/chromium/
+#install -m755 opt/google/chrome/libpdf.so %{buildroot}%{_libdir}/chromium/
 install -m755 opt/google/chrome/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
 install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
 
@@ -57,8 +57,8 @@ install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/
 %{_libdir}/chromium/PepperFlash/
 
 
-%files -n chromium-pdf-plugin
-%{_libdir}/chromium/libpdf.so
+#%files -n chromium-pdf-plugin
+#%{_libdir}/chromium/libpdf.so
 
 
 %files -n chromium-widevinecdm-plugin
@@ -67,6 +67,10 @@ install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/
 
 
 %changelog
+* Wed Apr 15 2015 Arkady L. Shane <ashejn@russianfedora.ru> 17.0.0.169-1.R
+- update to 17.0.0.169
+- no more pdf plugin
+
 * Wed Mar 18 2015 Arkady L. Shane <ashejn@russianfedora.ru> 17.0.0.134-1.R
 - update to 17.0.0.134
 
