@@ -1,3 +1,5 @@
+%define debug_package %{nil}
+
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
 Version:        19.0.0.185
