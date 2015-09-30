@@ -1,4 +1,4 @@
-%define debug_package %{nil}
+%global debug_package %{nil}
 
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
