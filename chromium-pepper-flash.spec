@@ -2,7 +2,7 @@
 
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        19.0.0.226
+Version:        19.0.0.245
 Release:        1%{?dist}
 
 License:        Proprietary
@@ -56,6 +56,9 @@ install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/
 
 
 %changelog
+* Thu Nov 12 2015 Arkady L. Shane <ashejn@russianfedora.ru> 19.0.0.245-1.R
+- update to 19.0.0.245
+
 * Mon Oct 26 2015 Arkady L. Shane <ashejn@russianfedora.ru> 19.0.0.226-1.R
 - update to 19.0.0.226
 
