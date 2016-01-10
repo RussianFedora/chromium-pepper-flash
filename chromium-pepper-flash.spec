@@ -40,9 +40,9 @@ rpm2cpio %{SOURCE0} | cpio -idmv
 
 %install
 mkdir -p %{buildroot}%{_libdir}/chromium/PepperFlash/
-install -m644 opt/google/chrome/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
-install -m755 opt/google/chrome/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
-install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
+install -m644 opt/google/chrome-unstable/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
+install -m755 opt/google/chrome-unstable/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
+install -m755 opt/google/chrome-unstable/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
 
 
 %files
