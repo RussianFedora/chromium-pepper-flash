@@ -1,15 +1,21 @@
 %global debug_package %{nil}
+%global stable 1
 
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        20.0.0.267
+Version:        20.0.0.286
 Release:        1%{?dist}
 
 License:        Proprietary
 Url:            http://www.google.com/chrome
 Group:          Applications/Internet
+%if 0%{?stable}
+Source0:        https://dl.google.com/linux/direct/google-chrome-stable_current_i386.rpm
+Source1:        https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+%else
 Source0:        https://dl.google.com/linux/direct/google-chrome-unstable_current_i386.rpm
 Source1:        https://dl.google.com/linux/direct/google-chrome-unstable_current_x86_64.rpm
+%endif
 
 BuildRequires:  rpm cpio
 
@@ -40,9 +46,15 @@ rpm2cpio %{SOURCE0} | cpio -idmv
 
 %install
 mkdir -p %{buildroot}%{_libdir}/chromium/PepperFlash/
+%if 0%{?stable}
+install -m644 opt/google/chrome/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
+install -m755 opt/google/chrome/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
+install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
+%else
 install -m644 opt/google/chrome-unstable/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
 install -m755 opt/google/chrome-unstable/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
 install -m755 opt/google/chrome-unstable/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
+%endif
 
 
 %files
@@ -56,6 +68,9 @@ install -m755 opt/google/chrome-unstable/libwidevinecdmadapter.so %{buildroot}%{
 
 
 %changelog
+* Thu Jan 21 2016 Arkady L. Shane <ashejn@russianfedora.ru> 20.0.0.286-1.R
+- update to 20.0.0.286
+
 * Sun Jan 10 2016 Arkady L. Shane <ashejn@russianfedora.ru> 20.0.0.267-1.R
 - update to 20.0.0.267
 
