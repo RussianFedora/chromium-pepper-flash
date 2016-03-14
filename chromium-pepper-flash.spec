@@ -1,23 +1,25 @@
 %global debug_package %{nil}
-%global stable 1
+%global stable 0
 
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        20.0.0.306
+Version:        21.0.0.182
 Release:        1%{?dist}
 
 License:        Proprietary
 Url:            http://www.google.com/chrome
 Group:          Applications/Internet
 %if 0%{?stable}
-Source0:        https://dl.google.com/linux/direct/google-chrome-stable_current_i386.rpm
+#Source0:        https://dl.google.com/linux/direct/google-chrome-stable_current_i386.rpm
 Source1:        https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 %else
-Source0:        https://dl.google.com/linux/direct/google-chrome-unstable_current_i386.rpm
-Source1:        https://dl.google.com/linux/direct/google-chrome-unstable_current_x86_64.rpm
+#Source0:        https://dl.google.com/linux/direct/google-chrome-beta_current_i386.rpm
+Source1:        https://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm
 %endif
 
 BuildRequires:  rpm cpio
+
+ExclusiveArch:  x86_64
 
 
 %description
@@ -51,9 +53,9 @@ install -m644 opt/google/chrome/PepperFlash/* %{buildroot}%{_libdir}/chromium/Pe
 install -m755 opt/google/chrome/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
 install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
 %else
-install -m644 opt/google/chrome-unstable/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
-install -m755 opt/google/chrome-unstable/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
-install -m755 opt/google/chrome-unstable/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
+install -m644 opt/google/chrome-beta/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
+install -m755 opt/google/chrome-beta/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
+install -m755 opt/google/chrome-beta/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
 %endif
 
 
@@ -68,6 +70,10 @@ install -m755 opt/google/chrome-unstable/libwidevinecdmadapter.so %{buildroot}%{
 
 
 %changelog
+* Mon Mar 14 2016 Arkady L. Shane <ashejn@russianfedora.ru> 21.0.0.182-1.R
+- update to 21.0.0.182
+- Google provide only 64-bit version
+
 * Wed Feb 10 2016 Arkady L. Shane <ashejn@russianfedora.ru> 20.0.0.306-1.R
 - update to 20.0.0.306
 
@@ -86,7 +92,7 @@ install -m755 opt/google/chrome-unstable/libwidevinecdmadapter.so %{buildroot}%{
 * Mon Oct 26 2015 Arkady L. Shane <ashejn@russianfedora.ru> 19.0.0.226-1.R
 - update to 19.0.0.226
 
-* Tue Oct 22 2015 Arkady L. Shane <ashejn@russianfedora.ru> 19.0.0.207-1.R
+* Thu Oct 22 2015 Arkady L. Shane <ashejn@russianfedora.ru> 19.0.0.207-1.R
 - update to 19.0.0.207
 
 * Tue Sep 29 2015 Arkady L. Shane <ashejn@russianfedora.ru> 19.0.0.185-1.R
