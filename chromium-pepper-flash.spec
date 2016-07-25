@@ -1,25 +1,17 @@
 %global debug_package %{nil}
-%global stable 0
 
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
 Version:        22.0.0.209
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 License:        Proprietary
 Url:            http://www.google.com/chrome
 Group:          Applications/Internet
-%if 0%{?stable}
-#Source0:        https://dl.google.com/linux/direct/google-chrome-stable_current_i386.rpm
-Source1:        https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-%else
-#Source0:        https://dl.google.com/linux/direct/google-chrome-beta_current_i386.rpm
+Source0:        https://fpdownload.adobe.com/pub/flashplayer/pdc/%{version}/flash_player_ppapi_linux.i386.tar.gz
 Source1:        https://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm
-%endif
 
 BuildRequires:  rpm cpio
-
-ExclusiveArch:  x86_64
 
 
 %description
@@ -42,20 +34,18 @@ Official Widevine CDM plugin for Google's Open Source browser Chromium.
 %ifarch x86_64
 rpm2cpio %{SOURCE1} | cpio -idmv
 %else
-rpm2cpio %{SOURCE0} | cpio -idmv
+tar xaf %{SOURCE0}
 %endif
 
 
 %install
 mkdir -p %{buildroot}%{_libdir}/chromium/PepperFlash/
-%if 0%{?stable}
-install -m644 opt/google/chrome/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
-install -m755 opt/google/chrome/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
-install -m755 opt/google/chrome/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
-%else
+%ifarch x86_64
 install -m644 opt/google/chrome-beta/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
 install -m755 opt/google/chrome-beta/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
 install -m755 opt/google/chrome-beta/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
+%else
+install -m644 *.so *.json %{buildroot}%{_libdir}/chromium/PepperFlash/ 
 %endif
 
 
@@ -63,13 +53,17 @@ install -m755 opt/google/chrome-beta/libwidevinecdmadapter.so %{buildroot}%{_lib
 %dir %{_libdir}/chromium/
 %{_libdir}/chromium/PepperFlash/
 
-
+%ifarch x86_64
 %files -n chromium-widevinecdm-plugin
 %{_libdir}/chromium/libwidevinecdm.so
 %{_libdir}/chromium/libwidevinecdmadapter.so
+%endif
 
 
 %changelog
+* Mon Jul 25 2016 Arkady L. Shane <ashejn@russianfedora.ru> 22.0.0.209-2
+- build 32 bit package
+
 * Thu Jul 14 2016 Arkady L. Shane <ashejn@russianfedora.ru> 22.0.0.209-1.R
 - update to 22.0.0.209
 
