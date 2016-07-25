@@ -17,7 +17,7 @@ BuildRequires:  rpm cpio
 %description
 Pepper API based Adobe Flash plugin for Google's Open Source browser Chromium.
 
-
+%ifarch x86_64
 %package -n chromium-widevinecdm-plugin
 Summary:        Chromium Widevine CDM plugin
 Group:          Applications/Internet
@@ -25,6 +25,7 @@ Group:          Applications/Internet
 
 %description -n chromium-widevinecdm-plugin
 Official Widevine CDM plugin for Google's Open Source browser Chromium.
+%endif
 
 %prep
 %setup -c -T
