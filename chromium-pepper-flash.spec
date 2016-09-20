@@ -10,6 +10,7 @@ Url:            http://www.google.com/chrome
 Group:          Applications/Internet
 Source0:        https://fpdownload.adobe.com/pub/flashplayer/pdc/%{version}/flash_player_ppapi_linux.i386.tar.gz
 Source1:        https://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm
+Source2:	https://fpdownload.adobe.com/pub/flashplayer/pdc/%{version}/flash_player_ppapi_linux.x86_64.tar.gz
 
 BuildRequires:  rpm cpio
 
@@ -34,6 +35,7 @@ Official Widevine CDM plugin for Google's Open Source browser Chromium.
 %build
 %ifarch x86_64
 rpm2cpio %{SOURCE1} | cpio -idmv
+tar xaf %{SOURCE2}
 %else
 tar xaf %{SOURCE0}
 %endif
@@ -41,12 +43,10 @@ tar xaf %{SOURCE0}
 
 %install
 mkdir -p %{buildroot}%{_libdir}/chromium/PepperFlash/
+install -m644 *.so *.json %{buildroot}%{_libdir}/chromium/PepperFlash/ 
 %ifarch x86_64
-install -m644 opt/google/chrome-beta/PepperFlash/* %{buildroot}%{_libdir}/chromium/PepperFlash/ 
 install -m755 opt/google/chrome-beta/libwidevinecdm.so %{buildroot}%{_libdir}/chromium/
 install -m755 opt/google/chrome-beta/libwidevinecdmadapter.so %{buildroot}%{_libdir}/chromium/
-%else
-install -m644 *.so *.json %{buildroot}%{_libdir}/chromium/PepperFlash/ 
 %endif
 
 
