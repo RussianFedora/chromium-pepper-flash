@@ -7,8 +7,8 @@
 
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        23.0.0.162
-Release:        2%{?dist}
+Version:        23.0.0.205
+Release:        1%{?dist}
 
 License:        Proprietary
 Url:            http://www.google.com/chrome
@@ -67,6 +67,9 @@ install -m755 opt/google/chrome-beta/libwidevinecdmadapter.so %{buildroot}%{_lib
 
 
 %changelog
+* Sat Oct 29 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.205-1
+- update to 23.0.0.205
+
 * Mon Oct  3 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.162-2
 - use chromium-browser folder for Fedora >= 25 as Russian Fedora
   does not provide chromium any more
