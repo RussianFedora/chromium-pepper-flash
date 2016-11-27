@@ -63,7 +63,7 @@ install -m755 opt/google/chrome-beta/libwidevinecdmadapter.so %{buildroot}%{_lib
 
 
 %changelog
-* Sun Nov 17 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.207-2
+* Sun Nov 27 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.207-2
 - always push plugins to chromium-browser directory
 
 * Mon Nov 14 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.207-1
