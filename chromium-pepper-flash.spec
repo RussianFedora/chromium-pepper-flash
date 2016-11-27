@@ -1,14 +1,10 @@
 %global debug_package %{nil}
-%if 0%{?fedora} >= 25
 %global chromium_home chromium-browser
-%else
-%global chromium_home chromium
-%endif
 
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
 Version:        23.0.0.207
-Release:        1%{?dist}
+Release:        2%{?dist}
 
 License:        Proprietary
 Url:            http://www.google.com/chrome
@@ -67,6 +63,9 @@ install -m755 opt/google/chrome-beta/libwidevinecdmadapter.so %{buildroot}%{_lib
 
 
 %changelog
+* Sun Nov 17 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.207-2
+- always push plugins to chromium-browser directory
+
 * Mon Nov 14 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.207-1
 - update to 23.0.0.207
 
