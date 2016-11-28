@@ -4,14 +4,13 @@
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
 Version:        23.0.0.207
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 License:        Proprietary
 Url:            http://www.google.com/chrome
 Group:          Applications/Internet
 Source0:        https://fpdownload.adobe.com/pub/flashplayer/pdc/%{version}/flash_player_ppapi_linux.i386.tar.gz
-Source1:        https://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm
-Source2:	https://fpdownload.adobe.com/pub/flashplayer/pdc/%{version}/flash_player_ppapi_linux.x86_64.tar.gz
+Source1:	https://fpdownload.adobe.com/pub/flashplayer/pdc/%{version}/flash_player_ppapi_linux.x86_64.tar.gz
 
 BuildRequires:  rpm cpio
 
@@ -19,24 +18,13 @@ BuildRequires:  rpm cpio
 %description
 Pepper API based Adobe Flash plugin for Google's Open Source browser Chromium.
 
-%ifarch x86_64
-%package -n chromium-widevinecdm-plugin
-Summary:        Chromium Widevine CDM plugin
-Group:          Applications/Internet
-
-
-%description -n chromium-widevinecdm-plugin
-Official Widevine CDM plugin for Google's Open Source browser Chromium.
-%endif
-
 %prep
 %setup -c -T
 
 
 %build
 %ifarch x86_64
-rpm2cpio %{SOURCE1} | cpio -idmv
-tar xaf %{SOURCE2}
+tar xaf %{SOURCE1}
 %else
 tar xaf %{SOURCE0}
 %endif
@@ -45,24 +33,16 @@ tar xaf %{SOURCE0}
 %install
 mkdir -p %{buildroot}%{_libdir}/%{chromium_home}/PepperFlash/
 install -m644 *.so *.json %{buildroot}%{_libdir}/%{chromium_home}/PepperFlash/ 
-%ifarch x86_64
-install -m755 opt/google/chrome-beta/libwidevinecdm.so %{buildroot}%{_libdir}/%{chromium_home}/
-install -m755 opt/google/chrome-beta/libwidevinecdmadapter.so %{buildroot}%{_libdir}/%{chromium_home}/
-%endif
-
 
 %files
 %dir %{_libdir}/%{chromium_home}/
 %{_libdir}/%{chromium_home}/PepperFlash/
 
-%ifarch x86_64
-%files -n chromium-widevinecdm-plugin
-%{_libdir}/%{chromium_home}/libwidevinecdm.so
-%{_libdir}/%{chromium_home}/libwidevinecdmadapter.so
-%endif
-
 
 %changelog
+* Mon Nov 28 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.207-3
+- drop chromium-widevinecdm-plugin package as it is a part of chromium
+
 * Sun Nov 27 2016 Arkady L. Shane <ashejn@russianfedora.ru> 23.0.0.207-2
 - always push plugins to chromium-browser directory
 
