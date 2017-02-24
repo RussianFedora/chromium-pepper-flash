@@ -43,6 +43,9 @@ install -m644 *.so *.json %{buildroot}%{_libdir}/%{chromium_home}/PepperFlash/
 * Fri Feb 24 2016 Arkady L. Shane <ashejn@russianfedora.ru> 24.0.0.221-1
 - update to 24.0.0.221
 
+* Fri Jan 27 2017 Arkady L. Shane <ashejn@russianfedora.ru> 24.0.0.194-1
+- update to 24.0.0.194
+
 * Thu Dec 15 2016 Arkady L. Shane <ashejn@russianfedora.ru> 24.0.0.186-1
 - update to 24.0.0.186
 
