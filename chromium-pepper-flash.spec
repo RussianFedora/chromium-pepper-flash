@@ -3,7 +3,7 @@
 
 Summary:        Chromium Flash player plugin
 Name:           chromium-pepper-flash
-Version:        26.0.0.137
+Version:        26.0.0.151
 Release:        1%{?dist}
 
 License:        Proprietary
@@ -40,6 +40,9 @@ install -m644 *.so *.json %{buildroot}%{_libdir}/%{chromium_home}/PepperFlash/
 
 
 %changelog
+* Mon Aug 28 2017 Arkady L. Shane <ashejn@russianfedora.pro> 26.0.0.151-1
+- update to 26.0.0.151
+
 * Mon Jul 17 2017 Arkady L. Shane <ashejn@russianfedora.pro> 26.0.0.137-1
 - update to 26.0.0.137
 
